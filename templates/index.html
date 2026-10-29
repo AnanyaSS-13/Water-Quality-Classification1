@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Water Potability Classification</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Water Potability Classification</h1>
+
+        <p class="subtitle">
+            Enter the water quality parameters to predict whether the water is potable.
+        </p>
+
+        <form action="/predict" method="POST">
+
+            <div class="form-grid">
+
+                <div class="input-group">
+                    <label>pH</label>
+                    <input type="number" step="any" name="ph" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Hardness</label>
+                    <input type="number" step="any" name="hardness" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Solids</label>
+                    <input type="number" step="any" name="solids" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Chloramines</label>
+                    <input type="number" step="any" name="chloramines" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Sulfate</label>
+                    <input type="number" step="any" name="sulfate" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Conductivity</label>
+                    <input type="number" step="any" name="conductivity" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Organic Carbon</label>
+                    <input type="number" step="any" name="organic_carbon" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Trihalomethanes</label>
+                    <input type="number" step="any" name="trihalomethanes" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Turbidity</label>
+                    <input type="number" step="any" name="turbidity" required>
+                </div>
+
+            </div>
+
+            <button type="submit">Predict Water Potability</button>
+
+            <button type="reset" class="reset-button">Clear</button>
+        </form>
+
+        {% if prediction_text %}
+            <div class="result">
+                <h2>{{ prediction_text }}</h2>
+            </div>
+        {% endif %}
+
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
